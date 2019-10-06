@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+
 public class MysqlController {
 	private Connection conn;
 	private String driver;
@@ -56,7 +57,7 @@ public class MysqlController {
 		return this;
 	}
 
-	public JSONObject sqlExecute(String sql) {
+	public JSONObject sqlExecute(String sql)  {
 		System.out.println("sqlCommand");
 		JSONObject res = new JSONObject();
 		res.put("error", 1);
@@ -79,7 +80,7 @@ public class MysqlController {
 		return res;
 	}
 
-	public JSONObject sqlExecuteQuery(String sql) {
+	public JSONObject sqlExecuteQuery(String sql)  {
 		System.out.println("sqlExecuteQuery");
 		JSONObject res = new JSONObject();
 		res.put("error", 1);
@@ -125,7 +126,7 @@ public class MysqlController {
 		//JSONObject params = sqlExecuteQuery(sqlSP);
 		return new JSONObject();
 	}
-	public JSONObject CallSP(JSONObject data) {
+	public JSONObject CallSP(JSONObject data)  {
 		System.out.println("CallSP");
 		JSONObject res = new JSONObject();
 		res.put("error", 1);
@@ -194,7 +195,7 @@ public class MysqlController {
 		return res;
 	}
 	
-	public JSONObject CallSPCustom(JSONObject data,LinkedHashMap<String, String> map) {
+	public JSONObject CallSPCustom(JSONObject data,LinkedHashMap<String, String> map)  {
 		System.out.println("CallSP");
 		JSONObject res = new JSONObject();
 		res.put("error", 1);
@@ -266,7 +267,7 @@ public class MysqlController {
 	}
 	
 	
-	private LinkedHashMap<String, String> getSpParamsMap(String sp,JSONObject params) {
+	private LinkedHashMap<String, String> getSpParamsMap(String sp,JSONObject params)  {
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 		JSONObject j = new JSONObject();
 		JSONObject r = this.sqlExecuteQuery("SELECT param_list FROM mysql.proc WHERE name='"+sp+"' ");
