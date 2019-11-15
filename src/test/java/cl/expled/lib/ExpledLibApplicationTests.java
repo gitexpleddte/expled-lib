@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.itextpdf.text.DocumentException;
-import com.sap.conn.jco.JCoException;
+//import com.sap.conn.jco.JCoException;
 
 import cl.expled.lib.controllers.HanaController;
 import cl.expled.lib.controllers.MysqlController;
@@ -63,9 +63,9 @@ public class ExpledLibApplicationTests {
 		
 	}
 	//@Test
-	public void contextLoads2() throws JSONException, JCoException {
+	public void contextLoads2() throws JSONException {
 		System.out.println("SapController");
-		SapController sap = new SapController()
+		/*SapController sap = new SapController()
 			.setJCO_ASHOST("/H/200.54.27.10/H/192.168.10.98")
 			.setJCO_CLIENT("300")
 			.setJCO_PASSWD("Invertec@2019.")
@@ -77,11 +77,11 @@ public class ExpledLibApplicationTests {
 		}
 		String sJson ="{\"RFC\": \"ZMOV_40005\",\"getBase\":true}";
 		JSONObject json = new JSONObject(sJson);
-		System.out.println(sap.callRfc(json));
+		System.out.println(sap.callRfc(json));*/
 	}
 	
 	//@Test
-	public void contextLoads3() throws JSONException, JCoException {
+	public void contextLoads3() throws JSONException {
 		System.out.println("ConfigProperties");
 		Properties p = ConfigProperties.getProperties("C:/cl.expled/lib/test.properties");
 		System.out.println(p);
