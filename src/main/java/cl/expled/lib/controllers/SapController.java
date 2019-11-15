@@ -14,6 +14,8 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.XML;
 
+public class SapController {}
+/*
 import com.sap.conn.jco.JCoContext;
 import com.sap.conn.jco.JCoDestination;
 import com.sap.conn.jco.JCoDestinationManager;
@@ -260,3 +262,4 @@ public class SapController {
     }
 
 }
+*/
