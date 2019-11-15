@@ -12,8 +12,6 @@ public class ExpledLibApplication {
 	
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(ExpledLibApplication.class, args);
-		//System.out.println(ConfigProperties.getLocalProperty("propertiesFile"));
-		//System.out.println(ConfigProperties.getProperty("driverDB"));
 	}
 
 }

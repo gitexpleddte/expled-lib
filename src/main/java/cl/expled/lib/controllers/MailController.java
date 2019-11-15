@@ -1,4 +1,4 @@
-package cl.expled.lib;
+package cl.expled.lib.controllers;
 
 import java.util.Properties;
 
@@ -71,18 +71,18 @@ public class MailController {
 			// Set text message part
 			multipart.addBodyPart(messageBodyPart);
 			if (files !=null){
-			for (int i = 0; i < files.length; i++) {
-				// Part two is attachment
-				messageBodyPart = new MimeBodyPart();
-				String filename = files[i];
-
-				DataSource source = new FileDataSource(filename);
-				messageBodyPart.setDataHandler(new DataHandler(source));
-
-			
-				messageBodyPart.setFileName(fileName[i]);
-				multipart.addBodyPart(messageBodyPart);
-			}
+				for (int i = 0; i < files.length; i++) {
+					// Part two is attachment
+					messageBodyPart = new MimeBodyPart();
+					String filename = files[i];
+	
+					DataSource source = new FileDataSource(filename);
+					messageBodyPart.setDataHandler(new DataHandler(source));
+	
+				
+					messageBodyPart.setFileName(fileName[i]);
+					multipart.addBodyPart(messageBodyPart);
+				}
 			}
 
 			// Send the complete message parts

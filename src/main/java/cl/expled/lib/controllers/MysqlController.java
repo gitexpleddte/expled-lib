@@ -1,4 +1,4 @@
-package cl.expled.lib;
+package cl.expled.lib.controllers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -69,6 +69,7 @@ public class MysqlController {
 			res.put("message", "OK");
 			stmt.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			Exeptions.add(e);
 			res.put("error", 1);
 			res.put("message", e.getMessage());
@@ -104,6 +105,7 @@ public class MysqlController {
 			res.put("error", 0);
 			stmt.close();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			Exeptions.add(e);
 			res.put("error", 1);
 			res.put("message", e.getMessage());
@@ -111,6 +113,7 @@ public class MysqlController {
 			res.put("e", "SQLException");
 			res.put("sql", sql);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Exeptions.add(e);
 			res.put("error", 1);
 			res.put("message", e.getMessage());
@@ -177,6 +180,7 @@ public class MysqlController {
 			res.put("error", 0);
 			stmt.close();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			Exeptions.add(e);
 			res.put("error", 1);
 			res.put("message", e.getMessage());
@@ -184,6 +188,7 @@ public class MysqlController {
 			res.put("e", "SQLException");
 			res.put("sql", sql);
 		} catch (Exception e) {
+			e.printStackTrace();
 			Exeptions.add(e);
 			res.put("error", 1);
 			res.put("message", e.getMessage());
@@ -234,7 +239,7 @@ public class MysqlController {
 						}else if(odt.has(key) && odt.getString(key).equals("time")) {
 							row.put(key, rs.getTime(key));
 						}else {
-							row.put(key, rs.getString(key));
+							row.put(key, rs.getString(key)==null?JSONObject.NULL:rs.getString(key));
 						}
 					}
 				}else {
@@ -250,12 +255,14 @@ public class MysqlController {
 			res.put("error", 0);
 			stmt.close();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			res.put("error", 1);
 			res.put("message", e.getMessage());
 			res.put("printStackTrace", e.getStackTrace()[0].getLineNumber());
 			res.put("e", "SQLException");
 			res.put("sql", sql);
 		} catch (Exception e) {
+			e.printStackTrace();
 			res.put("error", 1);
 			res.put("message", e.getMessage());
 			res.put("printStackTrace",  e.getStackTrace()[1].getLineNumber());
@@ -280,7 +287,7 @@ public class MysqlController {
 				if(arrItem.length>2)arrItem = Arrays.copyOfRange(arrItem, 1, arrItem.length);
 				j.put(arrItem[0], "");
 				//map.put(arrItem[0],arrItem[1]);
-				map.put(arrItem[0],params.has(arrItem[0])?params.getString(arrItem[0]):null);
+				map.put(arrItem[0],params.has(arrItem[0])?params.get(arrItem[0])+"":null);
 			}
 		}
 		System.out.println(j+"");
