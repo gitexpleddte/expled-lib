@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>cl.expled</groupId>
 	<artifactId>ExpledLib</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>ExpledLib</name>
 	<description>Funciones base para desarrollo de servicios</description>
 	
@@ -79,51 +79,16 @@
 			<scope>system</scope>
 			<systemPath>${pom.basedir}/nomaven/sapjco3.jar</systemPath> 
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.sap.cloud.db.jdbc/ngdbc -->
-		<!-- https://mvnrepository.com/artifact/com.sap.conn.jco/sapjco3 -->
-
-
-		
 		<dependency>
 		    <groupId>com.sap.cloud.db.jdbc</groupId>
 		    <artifactId>ngdbc</artifactId>
 		    <version>2.4.64</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>com.sap.hana.cloud</groupId>
-		    <artifactId>spring-cloud-sap-connector</artifactId>
-		    <version>1.0.4.RELEASE</version>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 		<plugins>
-		 	<!-- <plugin>
-				<inherited>false</inherited>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-	            <configuration>
-	                <groupId>com.sap</groupId>
-					<artifactId>com.sap.conn.jco.sapjco3</artifactId>
-					<version>3.0.0</version>
-	                <packaging>jar</packaging>
-	                <file>${pom.basedir}/nomaven/sapjco.jar</file>
-	                <scope>system</scope>
-					<systemPath>${pom.basedir}/nomaven/sapjco3.jar</systemPath>
-	                <includeSystemScope>true</includeSystemScope>
-	            </configuration>
-				<executions>
-			        <execution>
-			       		<id>install-jar-lib</id>
-			            <phase>verify</phase>
-			            <goals>
-			                <goal>repackage</goal>
-			            </goals>
-			        </execution>
-		    	</executions>
-			</plugin>-->
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-install-plugin</artifactId>
