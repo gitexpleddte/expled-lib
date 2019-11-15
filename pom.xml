@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>cl.expled</groupId>
 	<artifactId>ExpledLib</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 	<name>ExpledLib</name>
 	<description>Funciones base para desarrollo de servicios</description>
 	
