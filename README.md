@@ -3,10 +3,12 @@
 	Clases de ayuda para desarrollo de apis
 
 # Controladores
-	ConfigProperties
 	MysqlController
 	MailController
 
+# Propiedades y configuracion
+	ConfigProperties
+	
 # Utilidades	
 	Html2Pdf
 	Xsl2Pdf
