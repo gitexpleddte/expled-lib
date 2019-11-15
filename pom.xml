@@ -78,25 +78,25 @@
 		    <version>2.4.64</version>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.sap</groupId>
             <artifactId>com.sap.conn.jco.sapjco3</artifactId>
             <version>3.0.0</version>
-			<scope>system</scope>
+			<scope>runtime</scope>
 			<systemPath>${pom.basedir}/nomaven/sapjco3.jar</systemPath>
-		</dependency>
-		<!-- <dependency>
+		</dependency>-->
+		 <dependency>
 		    <groupId>com.sap.conn.jco</groupId>
 		    <artifactId>sapjco3</artifactId>
 		    <version>3.0.14</version> 
-		</dependency>-->
-		<!-- https://mvnrepository.com/artifact/org.hibersap/com.sap.conn.jco.sapjco3 -->
+		    <scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 		<plugins>
-			<plugin>
+			<!-- <plugin>
 				<inherited>false</inherited>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -119,7 +119,7 @@
 			            </goals>
 			        </execution>
 		    	</executions>
-			</plugin>
+			</plugin>-->
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-install-plugin</artifactId>
