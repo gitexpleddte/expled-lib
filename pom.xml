@@ -55,12 +55,12 @@
 	    	<groupId>org.apache.xmlgraphics</groupId>
 		    <artifactId>fop</artifactId>
 		    <version>2.3</version>
-		    <!-- <exclusions>
+		    <exclusions>
 		        <exclusion>
 		            <groupId>xml-apis</groupId>
 		            <artifactId>xml-apis</artifactId>
 		        </exclusion>
-		    </exclusions>-->
+		    </exclusions>
 	    </dependency>
 	    <dependency>
 		    <groupId>com.itextpdf.tool</groupId>
@@ -72,22 +72,22 @@
 		    <artifactId>itextpdf</artifactId>
 		    <version>5.5.13.1</version>
 		</dependency>
-		 <!-- <dependency>
+		<!--  <dependency>
 			<groupId>com.sap</groupId>
 			<artifactId>com.sap.conn.jco.sapjco3</artifactId>
 			<version>3.0.0</version>
 			<scope>system</scope>
 			<systemPath>${pom.basedir}/nomaven/sapjco3.jar</systemPath> 
 		</dependency>-->
-		<!-- <dependency>
+		<dependency>
 		    <groupId>com.sap.cloud.db.jdbc</groupId>
 		    <artifactId>ngdbc</artifactId>
 		    <version>2.4.64</version>
-		</dependency>-->
+		</dependency>
 	</dependencies>
 
 	<build>
-		<sourceDirectory>${projesct.basedir}/src/main/java</sourceDirectory>
+		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 		<plugins>
 			<!--<plugin>
 				<inherited>false</inherited>
