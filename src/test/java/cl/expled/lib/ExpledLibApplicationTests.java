@@ -37,8 +37,8 @@ public class ExpledLibApplicationTests {
 		System.out.println("MysqlController");
 		MysqlController m = new MysqlController()
 			.setUser("root")
-			.setPass("expled08")
-			.setUrl("jdbc:mysql://10.99.99.122/PROCESOS_SCLEM?useSSL=false&useUnicode=yes&characterEncoding=UTF-8")
+			.setPass("expled08*.")
+			.setUrl("jdbc:mysql://10.20.1.37:3306/baika_movilidad")
 			.connect();
 		
 		JSONObject result = new JSONObject();
@@ -48,16 +48,17 @@ public class ExpledLibApplicationTests {
 			return;
 		}
 		JSONObject input = new JSONObject();
-		input.put("sp", "DEMO_CALIDAD_ITEMS");
+		input.put("sp", "test_get_users");
 		JSONObject params = new JSONObject();
-		//JSONObject outputmap = new JSONObject();
-		params
+		//params.put("id", "0");
+		/*params
 			.put("ID",0)
 			.put("NOMBRE","")
 			.put("TIPO","")
 			//.put("MIN_WARNING","")
 			//.put("MIN_DANGER","")
 			.put("PLAN","");
+			*/
 		input.put("p",params);
 		System.out.println(m.CallSP(input));
 		

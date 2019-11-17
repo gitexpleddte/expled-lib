@@ -138,7 +138,7 @@ public class MysqlController {
 		Statement stmt = null;
 		try {
 			String sp = data.getString("sp");
-			JSONObject params = data.getJSONObject("p");
+			JSONObject params = data.has("p")?data.getJSONObject("p"):null;
 			//buscar todos los parametros del sp y setear los que vienen desde el consumo 
 			LinkedHashMap<String, String> map = getSpParamsMap( sp, params);
 			System.out.println(map);
@@ -210,7 +210,7 @@ public class MysqlController {
 		try {
 			String sp = data.getString("sp");
 			String sParams = "( ";
-			System.out.println(map);
+			//System.out.println(map);
 			if (map != null) {
 				for (String key : map.keySet()) {
 					sParams += map.get(key)==null ? "null," : "'" + map.get(key) + "',";
@@ -276,6 +276,7 @@ public class MysqlController {
 	
 	private LinkedHashMap<String, String> getSpParamsMap(String sp,JSONObject params)  {
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
+		if(params==null)return map;
 		JSONObject j = new JSONObject();
 		JSONObject r = this.sqlExecuteQuery("SELECT param_list FROM mysql.proc WHERE name='"+sp+"' ");
 		if(r.has("data") && r.getJSONArray("data").length()>0) {
@@ -285,12 +286,14 @@ public class MysqlController {
 				arrP[i]=arrP[i].replaceAll("\\n", "").replaceAll("\\t", "").trim();
 				String[] arrItem = arrP[i].split(" ");
 				if(arrItem.length>2)arrItem = Arrays.copyOfRange(arrItem, 1, arrItem.length);
-				j.put(arrItem[0], "");
+				if(!arrItem[0].equals("")) {
+					j.put(arrItem[0], "");
+					map.put(arrItem[0],params.has(arrItem[0])?params.get(arrItem[0])+"":null);
+				}
 				//map.put(arrItem[0],arrItem[1]);
-				map.put(arrItem[0],params.has(arrItem[0])?params.get(arrItem[0])+"":null);
 			}
 		}
-		System.out.println(j+"");
+		//System.out.println(j+"");
 		System.out.println(map);
 		return map;
 	}
