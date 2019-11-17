@@ -138,7 +138,9 @@ public class MysqlController {
 		Statement stmt = null;
 		try {
 			String sp = data.getString("sp");
-			JSONObject params = data.has("p")?data.getJSONObject("p"):null;
+			JSONObject params = data.has("p")?
+					data.getJSONObject("p"):
+					null;
 			//buscar todos los parametros del sp y setear los que vienen desde el consumo 
 			LinkedHashMap<String, String> map = getSpParamsMap( sp, params);
 			System.out.println(map);

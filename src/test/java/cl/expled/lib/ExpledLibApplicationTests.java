@@ -59,7 +59,7 @@ public class ExpledLibApplicationTests {
 			//.put("MIN_DANGER","")
 			.put("PLAN","");
 			*/
-		input.put("p",params);
+		//input.put("p",params);
 		System.out.println(m.CallSP(input));
 		
 	}
