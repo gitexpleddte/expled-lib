@@ -82,7 +82,7 @@ public class MysqlController {
 	}
 
 	public JSONObject sqlExecuteQuery(String sql)  {
-		System.out.println("sqlExecuteQuery");
+		//System.out.println("sqlExecuteQuery");
 		JSONObject res = new JSONObject();
 		res.put("error", 1);
 		res.put("message", "Instruccion no ejecutada");
@@ -130,7 +130,7 @@ public class MysqlController {
 		return new JSONObject();
 	}
 	public JSONObject CallSP(JSONObject data)  {
-		System.out.println("CallSP");
+		//System.out.println("CallSP");
 		JSONObject res = new JSONObject();
 		res.put("error", 1);
 		res.put("message", "Parametros ExecSP incorrectos");
@@ -142,7 +142,7 @@ public class MysqlController {
 			JSONObject params = data.has("p")?data.getJSONObject("p"):null;
 			//buscar todos los parametros del sp y setear los que vienen desde el consumo 
 			LinkedHashMap<String, String> map = getSpParamsMap( sp, params);
-			System.out.println(map);
+			//System.out.println(map);
 			String sParams = "( ";
 			if (map != null) {
 				for (String key : map.keySet()) {
@@ -150,7 +150,7 @@ public class MysqlController {
 				}
 				sParams = (sParams.substring(0, sParams.length() - 1))+ ")";
 			}
-			System.out.println(sParams);
+			//System.out.println(sParams);
 			JSONArray dataArr = new JSONArray();
 			sql = "CALL " + sp + " " + sParams;
 			stmt = (Statement) conn.createStatement();
@@ -218,7 +218,7 @@ public class MysqlController {
 				}
 				sParams = (sParams.substring(0, sParams.length() - 1))+ ")";
 			}
-			System.out.println(sParams);
+			//System.out.println(sParams);
 			JSONArray dataArr = new JSONArray();
 			sql = "CALL " + sp + " " + sParams;
 			stmt = (Statement) conn.createStatement();
@@ -289,13 +289,17 @@ public class MysqlController {
 				if(arrItem.length>2)arrItem = Arrays.copyOfRange(arrItem, 1, arrItem.length);
 				if(!arrItem[0].equals("")) {
 					j.put(arrItem[0], "");
-					map.put(arrItem[0],params.has(arrItem[0])?params.get(arrItem[0])+"":null);
+					String nValue = params.has(arrItem[0])&&!params.isNull(arrItem[0])?params.get(arrItem[0])+"":null;
+					if(nValue!=null) {
+						nValue = nValue.replace("\\", "\\\\");
+						nValue = nValue.replace("'", "''");
+					}
+					map.put(arrItem[0],nValue);
 				}
-				//map.put(arrItem[0],arrItem[1]);
 			}
 		}
 		//System.out.println(j+"");
-		System.out.println(map);
+		//System.out.println(map);
 		return map;
 	}
 

@@ -19,9 +19,9 @@ import com.itextpdf.text.DocumentException;
 
 import cl.expled.lib.controllers.HanaController;
 import cl.expled.lib.controllers.MysqlController;
-import cl.expled.lib.controllers.SapController;
 import cl.expled.lib.properties.ConfigProperties;
 import cl.expled.lib.utils.Html2Pdf;
+import cl.expled.lib.utils.JSONMap;
 import cl.expled.lib.utils.Xsl2Pdf;
 
 @RunWith(SpringRunner.class)
@@ -32,7 +32,7 @@ public class ExpledLibApplicationTests {
 		//HanaController h = new HanaController();
 		//h.connectionTest();
 	}
-	//@Test
+	@Test
 	public void contextLoads() throws JSONException {
 		System.out.println("MysqlController");
 		MysqlController m = new MysqlController()
@@ -50,17 +50,10 @@ public class ExpledLibApplicationTests {
 		JSONObject input = new JSONObject();
 		input.put("sp", "test_get_users");
 		JSONObject params = new JSONObject();
-		//params.put("id", "0");
-		/*params
-			.put("ID",0)
-			.put("NOMBRE","")
-			.put("TIPO","")
-			//.put("MIN_WARNING","")
-			//.put("MIN_DANGER","")
-			.put("PLAN","");
-			*/
-		//input.put("p",params);
-		System.out.println(m.CallSP(input));
+		
+		String sinput2 = "{\"sp\":\"sap_manager\",\"p\":{\"_cmd\":\"getCentrosByUser\",\"_JCO_USER\":null}}";
+		JSONObject input2 = new JSONObject(sinput2);
+		System.out.println(m.CallSP(input2));
 		
 	}
 	//@Test
@@ -103,5 +96,23 @@ public class ExpledLibApplicationTests {
 		"C:\\cl.expled\\lib\\20024.xml", 
 		"C:\\cl.expled\\lib\\materiaPrima.xsl");
 	}
+	
+	//@Test
+	public void contextLoads6() {
+		System.out.println("JSONMap");
+	    JSONObject ob = new JSONObject("{\"data\":{\"BAPI_GOODSMVT_CANCEL\":{\"INPUT\":{\"MATERIALDOCUMENT\":\"\",\"MATDOCUMENTYEAR\":\"0000\",\"DOCUMENTHEADER_TEXT\":\"\",\"GOODSMVT_PSTNG_DATE\":\"2020-01-17\",\"GOODSMVT_PR_UNAME\":\"\"},\"OUTPUT\":{\"GOODSMVT_HEADRET\":{\"DOC_YEAR\":\"0000\",\"MAT_DOC\":\"\"}},\"TABLES\":{\"RETURN\":{\"item\":{\"SYSTEM\":\"SCPCLNT300\",\"NUMBER\":\"063\",\"FIELD\":\"\",\"MESSAGE_V2\":\"\",\"MESSAGE\":\"El documento  no existe\",\"MESSAGE_V3\":\"\",\"MESSAGE_V4\":\"\",\"LOG_NO\":\"\",\"MESSAGE_V1\":\"\",\"ID\":\"M7\",\"ROW\":0,\"TYPE\":\"E\",\"LOG_MSG_NO\":\"000000\",\"PARAMETER\":\"GOODSMVT_HEADER\"}},\"GOODSMVT_MATDOCITEM\":\"\"}}},\"commit\":{\"BAPI_TRANSACTION_COMMIT\":{\"INPUT\":{\"WAIT\":\"X\"},\"OUTPUT\":{\"RETURN\":{\"SYSTEM\":\"\",\"NUMBER\":\"000\",\"FIELD\":\"\",\"MESSAGE_V2\":\"\",\"MESSAGE\":\"\",\"MESSAGE_V3\":\"\",\"MESSAGE_V4\":\"\",\"LOG_NO\":\"\",\"MESSAGE_V1\":\"\",\"ID\":\"\",\"ROW\":0,\"TYPE\":\"\",\"LOG_MSG_NO\":\"000000\",\"PARAMETER\":\"\"}}}},\"error\":0,\"message\":\"OK\"}");
+	    JSONObject ob2 = new JSONObject("{\"data\":{\"BAPI_GOODSMVT_CREATE\":{\"INPUT\":{\"GOODSMVT_PRINT_CTRL\":{\"PR_PRINT\":0},\"GOODSMVT_CODE\":{\"GM_CODE\":\"03\"},\"GOODSMVT_HEADER\":{\"HEADER_TXT\":\"\",\"BILL_OF_LADING_LONG\":\"\",\"REF_DOC_NO_LONG\":\"\",\"PR_UNAME\":\"\",\"REF_DOC_NO\":\"\",\"PSTNG_DATE\":\"2020-01-17\",\"BILL_OF_LADING\":\"\",\"BAR_CODE\":\"\",\"VER_GR_GI_SLIPX\":\"\",\"GR_GI_SLIP_NO\":\"\",\"VER_GR_GI_SLIP\":\"\",\"EXT_WMS\":\"\",\"DOC_DATE\":\"2020-01-17\"},\"GOODSMVT_REF_EWM\":{\"LOGSYS\":\"\",\"GTS_SCRAP_NO\":\"\",\"REF_DOC_EWM\":\"\"},\"TESTRUN\":\"\"},\"OUTPUT\":{\"MATERIALDOCUMENT\":\"\",\"MATDOCUMENTYEAR\":\"0000\",\"GOODSMVT_HEADRET\":{\"DOC_YEAR\":\"0000\",\"MAT_DOC\":\"\"}},\"TABLES\":{\"GOODSMVT_SERIALNUMBER\":\"\",\"RETURN\":{\"item\":{\"SYSTEM\":\"SCPCLNT300\",\"NUMBER\":300,\"FIELD\":\"\",\"MESSAGE_V2\":\"\",\"MESSAGE\":\"No se han transferido posiciones\",\"MESSAGE_V3\":\"\",\"MESSAGE_V4\":\"\",\"LOG_NO\":\"\",\"MESSAGE_V1\":\"\",\"ID\":\"M7\",\"ROW\":0,\"TYPE\":\"E\",\"LOG_MSG_NO\":\"000000\",\"PARAMETER\":\"GOODSMVT_HEADER\"}},\"GOODSMVT_ITEM_CWM\":\"\",\"GOODSMVT_SERV_PART_DATA\":\"\",\"GOODSMVT_ITEM\":\"\",\"EXTENSIONIN\":\"\"}}},\"commit\":{\"BAPI_TRANSACTION_COMMIT\":{\"INPUT\":{\"WAIT\":\"X\"},\"OUTPUT\":{\"RETURN\":{\"SYSTEM\":\"\",\"NUMBER\":\"000\",\"FIELD\":\"\",\"MESSAGE_V2\":\"\",\"MESSAGE\":\"\",\"MESSAGE_V3\":\"\",\"MESSAGE_V4\":\"\",\"LOG_NO\":\"\",\"MESSAGE_V1\":\"\",\"ID\":\"\",\"ROW\":0,\"TYPE\":\"\",\"LOG_MSG_NO\":\"000000\",\"PARAMETER\":\"\"}}}},\"error\":0,\"message\":\"OK\"}");
+	    
+	    String map ="data/BAPI_GOODSMVT_CANCEL/OUTPUT/GOODSMVT_HEADRET/DOC_YEAR";
+	    String map2 ="data/BAPI_GOODSMVT_CREATE/TABLES/RETURN/item/MESSAGE";
+	    Object o = JSONMap.getObject(ob2, map2);
+	    // Object oa = JSONMap.getObject(arr2, map4);
+	    System.out.println(o);
+	    //System.out.println(oa);
+			
+			
+	}
+	
+	
 
 }

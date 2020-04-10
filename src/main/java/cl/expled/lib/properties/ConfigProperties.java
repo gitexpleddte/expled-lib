@@ -21,6 +21,8 @@ el uso de estos parametros esta enfocado en la ayuda
 para el desarrollo de centralizacion de configuraciones en ambientes de  microservicios 	
  * */
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Properties;
@@ -115,5 +117,13 @@ public class ConfigProperties {
 		}
 		return new Properties();
 	}*/
+	
+	public Properties parsePropertiesString(String s) throws IOException {
+	    // grr at load() returning void rather than the Properties object
+	    // so this takes 3 lines instead of "return new Properties().load(...);"
+	    final Properties p = new Properties();
+	    p.load(new StringReader(s));
+	    return p;
+	}
 
 }
