@@ -32,15 +32,15 @@ public class ExpledLibApplicationTests {
 		//HanaController h = new HanaController();
 		//h.connectionTest();
 	}
-	@Test
-	public void contextLoads() throws JSONException {
-		System.out.println("MysqlController");
+	
+	//@Test
+	public void contextCamilo() {
 		MysqlController m = new MysqlController()
-			.setUser("root")
-			.setPass("expled08*.")
-			.setUrl("jdbc:mysql://10.20.1.37:3306/baika_movilidad")
-			.connect();
-		
+				.setUser("root")
+				.setPass("expled08*.")
+				.setUrl("jdbc:mysql://10.20.1.37:3306/baika_movilidad")
+				.connect();
+			
 		JSONObject result = new JSONObject();
 		if(!m.Exeptions.isEmpty()) {
 			result.put("Exepcion Text", m.Exeptions);
@@ -52,6 +52,25 @@ public class ExpledLibApplicationTests {
 		JSONObject params = new JSONObject();
 		
 		String sinput2 = "{\"sp\":\"sap_manager\",\"p\":{\"_cmd\":\"getCentrosByUser\",\"_JCO_USER\":null}}";
+		JSONObject input2 = new JSONObject(sinput2);
+		System.out.println(m.CallSP(input2));
+	}
+	@Test
+	public void contextLoads() throws JSONException {
+		System.out.println("MysqlController");
+		MysqlController m = new MysqlController()
+			.setUser("root")
+			.setPass("expled08")
+			.setUrl("jdbc:mysql://10.99.90.122:3306/FRUSAN")
+			.connect();
+		
+		JSONObject result = new JSONObject();
+		if(!m.Exeptions.isEmpty()) {
+			result.put("Exepcion Text", m.Exeptions);
+			System.out.println(result);
+			return;
+		}
+		String sinput2 = "{\"sp\":\"Login\",\"p\":{\"user_p\":\"CVALENZUELA\",\"pass_p\":\"Cv@l2019\"}}";
 		JSONObject input2 = new JSONObject(sinput2);
 		System.out.println(m.CallSP(input2));
 		
