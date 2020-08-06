@@ -33,12 +33,12 @@ public class ExpledLibApplicationTests {
 		//h.connectionTest();
 	}
 	
-	//@Test
+	@Test
 	public void contextCamilo() {
 		MysqlController m = new MysqlController()
 				.setUser("root")
-				.setPass("expled08*.")
-				.setUrl("jdbc:mysql://10.20.1.37:3306/baika_movilidad")
+				.setPass("expled08")
+				.setUrl("jdbc:mysql://10.20.1.41:3306/baika_movilidad")
 				.connect();
 			
 		JSONObject result = new JSONObject();
@@ -51,11 +51,11 @@ public class ExpledLibApplicationTests {
 		input.put("sp", "test_get_users");
 		JSONObject params = new JSONObject();
 		
-		String sinput2 = "{\"sp\":\"sap_manager\",\"p\":{\"_cmd\":\"getCentrosByUser\",\"_JCO_USER\":null}}";
+		String sinput2 = "{\"sp\":\"planificaciones\",\"p\":{\"_cmd\":\"getPlanificacion\"}}";
 		JSONObject input2 = new JSONObject(sinput2);
 		System.out.println(m.CallSP(input2));
 	}
-	@Test
+	//@Test
 	public void contextLoads() throws JSONException {
 		System.out.println("MysqlController");
 		MysqlController m = new MysqlController()

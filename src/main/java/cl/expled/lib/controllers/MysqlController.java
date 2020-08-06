@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 
 import org.json.JSONArray;
@@ -167,7 +168,7 @@ public class MysqlController {
 						case "FLOAT":
 						case "DOUBLE":row.put(key, rs.getDouble(key));break;
 						case "VARCHAR":row.put(key, rs.getString(key));break;
-						case "DATE":row.put(key, rs.getDate(key));break;
+						case "DATE":row.put(key, rs.getDate(key,Calendar.getInstance()));break;
 						case "TIME":row.put(key, rs.getTime(key));break;
 						case "OTHER":row.put(key, rs.getString(key));break;
 						default: row.put(key, rs.getString(key));break;
