@@ -280,7 +280,7 @@ public class MysqlController {
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 		if(params==null)return map;
 		JSONObject j = new JSONObject();
-		JSONObject r = this.sqlExecuteQuery("SELECT param_list FROM mysql.proc WHERE name='"+sp+"' and db in(SELECT DATABASE()) ");
+		JSONObject r = this.sqlExecuteQuery("SELECT replace(param_list,'`','') param_list FROM mysql.proc WHERE name='"+sp+"' and db in(SELECT DATABASE()) ");
 		if(r.has("data") && r.getJSONArray("data").length()>0) {
 			JSONObject item = r.getJSONArray("data").getJSONObject(0);
 			//System.out.println(item);

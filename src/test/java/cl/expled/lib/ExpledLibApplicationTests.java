@@ -34,6 +34,28 @@ public class ExpledLibApplicationTests {
 	}
 	
 	@Test
+	public void contextcaracter() {
+		MysqlController m = new MysqlController()
+				.setUser("root")
+				.setPass("expled08")
+				.setUrl("jdbc:mysql://10.99.90.122:3306/aesgener_instrucciones_pago")
+				.connect();
+			
+		JSONObject result = new JSONObject();
+		if(!m.Exeptions.isEmpty()) {
+			result.put("Exepcion Text", m.Exeptions);
+			System.out.println(result);
+			return;
+		}
+		JSONObject input = new JSONObject();
+		input.put("sp", "test_get_users");
+		JSONObject params = new JSONObject();
+		
+		String sinput2 = "{\"p\":{\"amount\":\"$ 45.067\",\"status_paid_pk\":1,\"status_billed_pk\":1,\"status_paid\":\"No Pagado\",\"max-payment-date\":\"\",\"billing-type\":\"Servicios Complementarios Infraestructura\",\"status_billed\":\"No Facturado\",\"publish-date\":\"28/09/2020\",\"creditor_pk\":281,\"debtor\":\"AES Gener\",\"periods\":\"Mar20\",\"creditor\":\"MINERA LOS PELAMBRES\",\"pk\":2114019,\"debtor_pk\":259,\"actions\":\"\"},\"sp\":\"instrucciones_pagos\"}";
+		JSONObject input2 = new JSONObject(sinput2);
+		System.out.println(m.CallSP(input2));
+	}
+	//@Test
 	public void contextCamilo() {
 		MysqlController m = new MysqlController()
 				.setUser("root")
